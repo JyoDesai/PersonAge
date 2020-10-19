@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Person Age</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script> -->
+</head>
+<body>
+    <h1>Find Person Age</h1>
+    <div>
+        <p>Program where user enters date of birth in a text field and based on the DOB you show the following:<br/>
+          Age in Years,<br/>
+          Age in Months,<br/>
+          Age in Days,<br/>
+          Age in Seconds</p> 
+      </div>
+  <button class="button" type="button" onclick="personAge()">Click Me</button>
+  <p id="demo"></p>
+</body>
+</html>
+<script>
+
+var DOB = "March 1, 1995";
+var millisecondsBetweenDOBAnd1970 = Date.parse(DOB); //millisecond betwn dob to 1970
+//The parse() method parses a date string and returns the number of milliseconds between the date string and midnight of January 1, 1970.
+console.log("millisecondsBetweenDOBAnd1970", millisecondsBetweenDOBAnd1970)
+
+var millisecondsBetweenNowAnd1970 = Date.now(); //millisecond betwn now to 1970
+////The Date.now() method returns the number of milliseconds since January 1, 1970 00:00:00 UTC.
+console.log("millisecondsBetweenNowAnd1970", millisecondsBetweenNowAnd1970)
+
+var ageInMilliseconds = millisecondsBetweenNowAnd1970-millisecondsBetweenDOBAnd1970;
+console.log("ageInMilliseconds", ageInMilliseconds)
+
+  var milliseconds = ageInMilliseconds;
+  console.log("milliseconds", milliseconds)
+
+  var second = 1000;
+  console.log("second", second)
+
+  var minute = second*60;
+  console.log("minute", minute)
+
+  var hour = minute*60;
+  console.log("hour", hour)
+
+  var day = hour*24;
+  console.log("day", day)
+
+  var month = day*30; 
+  console.log("month", month)
+
+  var year = day*365;
+  console.log("year", year  )
+
+//calculate yr, months, days, hrs and sec
+console.log(milliseconds/(day*365))
+var years = Math.round(milliseconds/year);
+console.log("years", years)
+
+var months = years*12;
+console.log("months", months)
+
+var days = years*365;
+console.log("days", days)
+
+var minutes = Math.round(milliseconds/minute);
+console.log("minutes", minutes)
+
+console.log(milliseconds/(minute*60))
+var hours = Math.round(milliseconds/hour);
+console.log("hours", hours)
+
+var seconds = Math.round(milliseconds/second);
+console.log("seconds", seconds)
+
+  
+function personAge(){
+  var message = "Age in Years : "+years+
+     "</br>Age in Months : "+months+
+       "</br>Age in Days : "+days+
+      "</br>Age in Hours : "+hours+
+      "</br>Age in Minute : "+minutes+
+      "</br>Age in Seconds : "+seconds+
+      "</br>Age in Milliseconds : "+milliseconds;
+  document.getElementById("demo").innerHTML = message;
+}
+
+</script>
